@@ -52,8 +52,6 @@ app.get("/janken", (req, res) => {
     judgement = '負け';
   }
   total += 1;
-  win += 1;
-  total += 1;
   const display = {
     your: hand,
     cpu: cpu,
