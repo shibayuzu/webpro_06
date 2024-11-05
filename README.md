@@ -27,7 +27,7 @@ flowchart TD;
 
 start["開始"];
 end1["終了"]
-if{"条件に合うか"}
+if{"条件aに合うか"}
 win["勝ち"]
 loose["負け"]
 
