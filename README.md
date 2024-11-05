@@ -10,10 +10,6 @@ app5.js | プログラム本体
 public/janken.html | じゃんけんの開始画面
 views/janken.ejs | じゃんけんのテンプレートファイル
 
-```javascript
-console.log('Hello');
-```
-
 1. ```app5.js```を起動する
 1. Wedブラウザでlocalhost:8080/pubkic/janken.htmlにアクセスする
 1. 自分の手を入力する
