@@ -1,6 +1,6 @@
 # webpro_06
 
-##　このプログラムについて
+## このプログラムについて
 
 ## ファイル一覧
 
@@ -22,12 +22,18 @@ console.log('Hello');
 flowchart TD;
 開始 --> 終了;
 ```
-
 ```mermaid
 flowchart TD;
 
 start["開始"];
-end1["終了"];
+end1["終了"]
 if{"条件に合うか"}
 win["勝ち"]
 loose["負け"]
+
+start --> if
+if -->|yas| win
+win --> end1
+if -->|no| loose
+loose --> end1
+```
