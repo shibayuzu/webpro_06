@@ -1,1 +1,20 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>数字当てゲーム</title>
+</head>
+<body>
+    <p>君は<%= your %>を選んだよ．</p>
+    <p>コンピュータは<%= cpu %>にしたよ．</p>
+    <p>判定：<%= judgement %></p>
+    <p>現在<%= total %>回中<%= win %>回当てたよ．</p>
+    <hr>
+    <form action="/look">
+        <input type="text" name="hand" required>
+        <label for="hand">次は何にする？</label>
+        <input type="hidden" name="total" value="<%= total %>">
+        <input type="submit" values="これだー！">
+    </form>   
+</body>
+</html>
