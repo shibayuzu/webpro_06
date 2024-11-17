@@ -84,4 +84,98 @@ app.get("/janken", (req, res) => {
   res.render('janken', display);
 });
 
+app.get("/look", (req, res) => {
+  let hand = Number(req.query.hand);
+  let total = Number(req.query.total) || 0;
+
+  console.log({ hand, total });
+
+  const cpu = Math.floor(Math.random() * 100 + 1);
+
+  let judgement = '';
+  if (hand === cpu) {
+    judgement = 'すごい！正解！';
+    total += 1;
+  } else {
+    judgement = `まだまだ！答えは${cpu}でした！`;
+  }
+
+  const display = {
+    your: hand,
+    cpu: cpu,
+    judgement: judgement,
+    total: total
+  };
+  res.render('look', display);
+});
+
+
+
+app.get("/action", (req, res) => {
+  let hand = req.query.hand;
+  let win = Number(req.query.win) || 0;
+  let total = Number(req.query.total) || 0;
+  let tame = Number(req.query.tame) || 0;
+
+  console.log({ hand, win, total, tame });
+
+  const num = Math.floor(Math.random() * 3 + 1);
+  let cpu = '';
+  if (num == 1) cpu = 'フィールド';
+  else if (num == 2) cpu = 'ためる';
+  else cpu = '攻撃';
+
+  let judgement = '';
+
+  if (hand == 'フィールド') {
+    if (cpu == '攻撃') {
+      judgement = '勝ち';
+      win += 1;
+      total += 1;
+    } else {
+      judgement = '引き分け';
+    }
+  } else if (hand == 'ためる') {
+    tame += 1; 
+    if (cpu == '攻撃') {
+      judgement = '負け';
+      total += 1;
+    } else {
+      judgement = '引き分け';
+    }
+  } else if (hand == '攻撃') {
+    if (tame > 0) {
+      tame -= 1;
+      if (cpu == 'フィールド') {
+        judgement = '負け';
+        total += 1;
+      } else if (cpu == '攻撃') {
+        judgement = '相打ち';
+        total += 1;
+      } else if (cpu == 'ためる') {
+        judgement = '勝ち';
+        win += 1;
+        total += 1;
+      }
+    } else {
+      judgement = '攻撃できないよ！';
+    }
+  } else {
+    judgement = '無効な手だよ！';
+  }
+
+  const display = {
+    your: hand,
+    cpu: cpu,
+    judgement: judgement,
+    win: win,
+    total: total,
+    tame: tame
+  };
+  res.render('action', display);
+});
+
+
+
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
