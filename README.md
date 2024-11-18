@@ -16,17 +16,119 @@ public/action.html | actionの開始画面
 views/action.ejs | actionのテンプレートファイル
 
 #### 機能の説明
-本課題で作成したjanken，action，lookの機能を説明する
-
+本課題で作成したjanken，look，actionの機能を説明する
 
 ・janken
 じゃんけんができる機能である．グー，チョキ，パーを入力することができる．グーはチョキに勝ち，チョキはパーに勝ち，パーはグーに勝つという仕様になっている．
 
+```mermaid
+flowchart TD;
+
+start["開始"]
+end1["終了"]
+playerChoice{"プレイヤーの選択"}
+computerChoice{"コンピュータの選択"}
+
+start --> playerChoice
+playerChoice -->|グー| computerChoice
+playerChoice -->|チョキ| computerChoice
+playerChoice -->|パー| computerChoice
+
+computerChoice -->|グー| check1
+computerChoice -->|チョキ| check2
+computerChoice -->|パー| check3
+
+check1 -->|グー| draw
+check1 -->|チョキ| win
+check1 -->|パー| loose
+
+check2 -->|グー| loose
+check2 -->|チョキ| draw
+check2 -->|パー| win
+
+check3 -->|グー| win
+check3 -->|チョキ| loose
+check3 -->|パー| draw
+
+win["勝ち"]
+loose["負け"]
+draw["引き分け"]
+
+win --> end1
+loose --> end1
+draw --> end1
+
+```
+
 ・look
 数字当てゲームができる機能である．1から100の中からランダムで一つをcpuが選び，それがなんの数字であるかを当てるという仕様になっている．
 
+```mermaid
+flowchart TD;
+
+start["開始"]
+cpuChoice["コンピュータが1から100の数字を選ぶ"]
+playerGuess{"プレイヤーの予想"}
+check{"予想のチェック"}
+judgement{"結果メッセージ"}
+end1["終了"]
+
+start --> cpuChoice
+cpuChoice --> playerGuess
+playerGuess --> check
+check -->|一致| judgement
+check -->|不一致| judgement
+
+judgement -->|正解| win
+judgement -->|不正解| loose
+
+win["すごい！正解！"]
+loose["まだまだ！答えは〇〇でした"]
+
+win --> end1
+loose --> end1
+
+```
 ・action
 簡単な対戦ができる機能である．シールド，ためる，攻撃を入力することができる．シールドは攻撃から守る役割，ためるは攻撃を一回するために必要な行動，攻撃は相手を倒すことができる役割で構成されている．
+```mermaid
+flowchart TD;
+
+start["開始"]
+cpuChoice["コンピュータが手を選ぶ"]
+playerChoice{"プレイヤーの選択"}
+judgement{"結果メッセージ"}
+end1["終了"]
+
+start --> playerChoice
+playerChoice --> cpuChoice
+cpuChoice --> judgement
+
+judgement -->|シールド vs 攻撃| win
+judgement -->|シールド vs シールド| draw
+judgement -->|シールド vs ためる| draw
+
+judgement -->|ためる vs 攻撃| lose
+judgement -->|ためる vs シールド| draw
+judgement -->|ためる vs ためる| draw
+
+judgement -->|攻撃できないよ！| noAttack
+judgement -->|攻撃 vs シールド| lose
+judgement -->|攻撃 vs 攻撃| draw
+judgement -->|攻撃 vs ためる| win
+
+win["勝ち"]
+lose["負け"]
+draw["引き分け"]
+noAttack["攻撃できないよ！"]
+
+win --> end1
+lose --> end1
+draw --> end1
+noAttack --> end1
+
+```
+
 ##　起動方法
 
 ### GithubのリポジトリをFrokする方法
@@ -70,28 +172,7 @@ Gitコマンドでユーザ名とメールアドレスを登録することでVS
 1. ```cd webpro_06```を入力
 1. Node.jsの環境で必要なパッケージを入手するために```npm install```を入力
 1. 実際にプログラムを実行するために```node app.js```
-1. ``` telnet localhost 8080```
+1. ```telnet localhost 8080```
 1. ```GET /luck HTTP/1.1```
 1. ```Host: localhost```
 1. ```http://localhost:8080/janken```
-
-
-```mermaid
-flowchart TD;
-開始 --> 終了;
-```
-```mermaid
-flowchart TD;
-
-start["開始"];
-end1["終了"]
-if{"条件に合うか"}
-win["勝ち"]
-loose["負け"]
-
-start --> if
-if -->|yas| win
-win --> end1
-if -->|no| loose
-loose --> end1
-```
