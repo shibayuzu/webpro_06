@@ -1,7 +1,7 @@
 # レポート課題
 
 ## webpro_06のadd5.jsのプログラムについて
-本課題ではGithubのwebpro_06のリポジトリをFrokしてapp5.jsを改造し，じゃんけん以外にユーザからの入力に対して結果を返す機能を2つ追加した．今回はjanken以外にactionとlookという機能を追加した．本レポートではapp5.js全体の内容を説明するドキュメントを記した．
+本課題ではGithubのwebpro_06のリポジトリをFrokしてapp5.jsを改造し，じゃんけん以外にユーザからの入力に対して結果を返す機能を2つ追加した．今回はjanken以外にlookとactionという機能を追加した．本レポートではapp5.js全体の内容を説明するドキュメントを記した．
 
 ## ファイルについて
 本課題にて使用したファイルの名前と内容を一覧にまとめた．
@@ -10,29 +10,41 @@
 app5.js | janken,action,lookの機能などがプログラムが書かれている本体
 public/janken.html | jankenの開始画面
 views/janken.ejs | jankenのテンプレートファイル
-public/action.html | actionの開始画面
-views/action.ejs | actionのテンプレートファイル
 public/look.html | lookの開始画面
 views/look.ejs | lookのテンプレートファイル
+public/action.html | actionの開始画面
+views/action.ejs | actionのテンプレートファイル
 ###　ファイルの内容説明
+
+使用したファイルの概要を説明する
 1. app5.js
 jankenやaction,lookなどの機能のプログラムが記されているファイルである．
 1. public/janken.html
 
 1. views/janken.ejs
 
-1. public/action.html
-
-1. views/action.ejs
-
 1. public/look.html
 
 1. views/look.ejs
 
-```javascript
-console.log('Hello');
-```
+1. public/action.html
 
+1. views/action.ejs
+
+#### 機能の説明
+本課題で作成したjanken，action，lookの機能を説明する
+
+
+
+
+・janken
+じゃんけんができる機能である．グー，チョキ，パーを入力することができる．グーはチョキに勝ち，チョキはパーに勝ち，パーはグーに勝つという仕様になっている．
+・look
+数字当てゲームができる機能である．
+・action
+簡単な対戦ができる機能である．シールド，ためる，攻撃を入力することができる．シールドは攻撃から守る役割，ためるは攻撃を一回するために必要な行動，攻撃は相手を倒すことができる役割で構成されている．
+look
+数字当てゲームができる機能である．
 ##　起動方法
 
 ### GithubのリポジトリをFrokする方法
@@ -69,6 +81,10 @@ Gitコマンドでユーザ名とメールアドレスを登録することでVS
 1. ```git commit -am ‘コメント'```
 1. ``` git push```
 
+```mermaid
+flowchart TD;
+git add . --> 終了;
+```
 
 ここでGithubのアクセストークンを入力する
 
@@ -77,10 +93,9 @@ Gitコマンドでユーザ名とメールアドレスを登録することでVS
 1. Wedブラウザでlocalhost:8080/pubkic/janken.htmlにアクセスする
 1. 自分の手を入力する
 
-```mermaid
-flowchart TD;
-開始 --> 終了;
-```
+
+
+
 ```mermaid
 flowchart TD;
 
@@ -95,4 +110,8 @@ if -->|yas| win
 win --> end1
 if -->|no| loose
 loose --> end1
+```
+
+```javascript
+console.log('Hello');
 ```

@@ -121,13 +121,13 @@ app.get("/action", (req, res) => {
 
   const num = Math.floor(Math.random() * 3 + 1);
   let cpu = '';
-  if (num == 1) cpu = 'フィールド';
+  if (num == 1) cpu = 'シールド';
   else if (num == 2) cpu = 'ためる';
   else cpu = '攻撃';
 
   let judgement = '';
 
-  if (hand == 'フィールド') {
+  if (hand == 'シールド') {
     if (cpu == '攻撃') {
       judgement = '勝ち';
       win += 1;
@@ -146,7 +146,7 @@ app.get("/action", (req, res) => {
   } else if (hand == '攻撃') {
     if (tame > 0) {
       tame -= 1;
-      if (cpu == 'フィールド') {
+      if (cpu == 'シールド') {
         judgement = '負け';
         total += 1;
       } else if (cpu == '攻撃') {
