@@ -14,37 +14,19 @@ public/look.html | lookの開始画面
 views/look.ejs | lookのテンプレートファイル
 public/action.html | actionの開始画面
 views/action.ejs | actionのテンプレートファイル
-###　ファイルの内容説明
-
-使用したファイルの概要を説明する
-1. app5.js
-jankenやaction,lookなどの機能のプログラムが記されているファイルである．
-1. public/janken.html
-
-1. views/janken.ejs
-
-1. public/look.html
-
-1. views/look.ejs
-
-1. public/action.html
-
-1. views/action.ejs
 
 #### 機能の説明
 本課題で作成したjanken，action，lookの機能を説明する
 
 
-
-
 ・janken
 じゃんけんができる機能である．グー，チョキ，パーを入力することができる．グーはチョキに勝ち，チョキはパーに勝ち，パーはグーに勝つという仕様になっている．
+
 ・look
-数字当てゲームができる機能である．
+数字当てゲームができる機能である．1から100の中からランダムで一つをcpuが選び，それがなんの数字であるかを当てるという仕様になっている．
+
 ・action
 簡単な対戦ができる機能である．シールド，ためる，攻撃を入力することができる．シールドは攻撃から守る役割，ためるは攻撃を一回するために必要な行動，攻撃は相手を倒すことができる役割で構成されている．
-look
-数字当てゲームができる機能である．
 ##　起動方法
 
 ### GithubのリポジトリをFrokする方法
@@ -71,31 +53,33 @@ look
 
 ###　Gitコマンドによるユーザ名とメールアドレスの登録
 1. ターミナルのcdコマンドでwebpro_06まで
-1. ユーザ名を登録するには```git config --global user.name "Yuzu shibazaki”```と入力する
-1. メールアドレスを登録するには```$ git config --global user.email "s24g1071qr@s.chibakoudai.jp"```と入力する
+1. ユーザ名を登録するには```git config --global user.name "shibayuzu”```と入力する
+1. メールアドレスを登録するには```$ git config --global user.email "fuyounoco@gmail.com"```と入力する
 
 Gitコマンドでユーザ名とメールアドレスを登録することでVSCodeで修正や追加をしたファイルをアップロードすることができる．ファイルをアップロードするにもGitコマンドを使用する．
 
 ### githubにファイルをアップロードする
-1. ```git add .```
-1. ```git commit -am ‘コメント'```
-1. ``` git push```
+```git add .```
+```git commit -am ‘コメント'```
+```git push```
+この順番にコマンドを実行する．そして，ここでGithubのアクセストークンを入力する．これらのコマンドをターミナルで実行することで，Githubに修正や追加をしたファイルをアップロードすることができる．
+
+##　プログラムの実行
+修正や追加をしたリポジトリを実際に機能を実行するための手順が必要である．
+
+1. ```cd webpro_06```を入力
+1. Node.jsの環境で必要なパッケージを入手するために```npm install```を入力
+1. 実際にプログラムを実行するために```node app.js```
+1. ``` telnet localhost 8080```
+1. ```GET /luck HTTP/1.1```
+1. ```Host: localhost```
+1. ```http://localhost:8080/janken```
+
 
 ```mermaid
 flowchart TD;
-git add . --> 終了;
+開始 --> 終了;
 ```
-
-ここでGithubのアクセストークンを入力する
-
-
-1. ```app5.js```を起動する
-1. Wedブラウザでlocalhost:8080/pubkic/janken.htmlにアクセスする
-1. 自分の手を入力する
-
-
-
-
 ```mermaid
 flowchart TD;
 
@@ -110,8 +94,4 @@ if -->|yas| win
 win --> end1
 if -->|no| loose
 loose --> end1
-```
-
-```javascript
-console.log('Hello');
 ```
