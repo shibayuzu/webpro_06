@@ -1,6 +1,7 @@
 .cover {
     border-bottom: 1px solid #c0c0c0;
     margin: 3px;
+    padding: 5px;
 }
 
 .name {
@@ -10,4 +11,44 @@
 
 .mes {
     margin-left: 30px;
+}
+
+.reactions {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.reaction {
+    font-size: 1.5em;
+}
+
+.reaction-count {
+    margin-left: 5px;
+}
+
+.favorite {
+    margin-left: 10px;
+    background-color: #ffeb3b;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.favorite:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+
+.delete {
+    margin-left: 10px;
+    background-color: #f44336;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: #d32f2f;
 }
