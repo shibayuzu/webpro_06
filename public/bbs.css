@@ -44,6 +44,7 @@
 .delete {
     margin-left: 10px;
     background-color: #f44336;
+    color: white;
     border: none;
     padding: 5px;
     cursor: pointer;

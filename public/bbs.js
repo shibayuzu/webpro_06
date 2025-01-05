@@ -82,7 +82,9 @@ document.querySelector('#check').addEventListener('click', () => {
                     date_area.className = 'date';
                     date_area.innerText = new Date().toLocaleString();
 
-                    let space = document.createTextNode('　');
+                    let space1 = document.createTextNode('　');
+                    let space2 = document.createTextNode('　');
+                    
 
                     let mes_area = document.createElement('span');
                     mes_area.className = 'mes';
@@ -127,7 +129,7 @@ document.querySelector('#check').addEventListener('click', () => {
                         emoji3Count.innerText = emoji3Clicks;
                     });
 
-                    // メッセージ削除ボタンの追加（削除ボタンを名前とメッセージの前に配置）
+                    // メッセージ削除ボタンの追加
                     let deleteButton = document.createElement('button');
                     deleteButton.className = 'delete';
                     deleteButton.innerText = '削除';
@@ -155,12 +157,13 @@ document.querySelector('#check').addEventListener('click', () => {
                     reactionsArea.appendChild(emoji3);
                     reactionsArea.appendChild(emoji3Count);
 
-                    cover.appendChild(deleteButton); // 削除ボタンを先に追加
                     cover.appendChild(favoriteButton);
+                    cover.appendChild(space1);
                     cover.appendChild(date_area);
-                    cover.appendChild(space);
+                    cover.appendChild(space2);
                     cover.appendChild(name_area);
                     cover.appendChild(mes_area);
+                    cover.appendChild(deleteButton);
                     cover.appendChild(reactionsArea);
 
                     bbs.appendChild(cover);
@@ -176,7 +179,7 @@ function updateFavorites() {
     for (let favorite of favorites) {
         let favoriteDiv = document.createElement('div');
         favoriteDiv.className = 'favorite-post';
-        favoriteDiv.innerText = `${favorite.name}: ${favorite.message}`;
+        favoriteDiv.innerText = `${favorite.name} : ${favorite.message}`;
         favoritesArea.appendChild(favoriteDiv);
     }
 }
